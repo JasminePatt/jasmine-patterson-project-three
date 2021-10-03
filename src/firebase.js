@@ -16,7 +16,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-const realtime = getDatabase(app);
+const realtimeData = getDatabase(app);
 
 // Lastly, export
-export default realtime;
+export default realtimeData;
