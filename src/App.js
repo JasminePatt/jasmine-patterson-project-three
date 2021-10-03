@@ -52,6 +52,15 @@ useEffect( () => {
   return (
     <div>
       <h1>Planted Ideas</h1>
+      {/* Form container */}
+      <form>
+        <label htmlFor="userNotepad">What's growing in your mind?</label>
+        <input
+        type="text"
+        id="userNotepad"
+        />
+        <button>Plant it!</button>
+      </form>
 
       {/* Container for page content(notes) */}
       <ul> {
