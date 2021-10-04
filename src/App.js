@@ -1,6 +1,15 @@
+// PSEUDOCODE
+
+// 1. Connect to firebase
+// 2. Reference databse and display input on page
+// 3. Make a container for the form
+  // Consider putting the notes and the form in separate components from main App.js
+
+
 import realtimeData from './firebase';
 import { useState, useEffect } from 'react';
-import {ref, onValue} from 'firebase/database';
+import {ref, onValue, push} from 'firebase/database';
+import NoteList from './components/NoteList';
 import './App.css';
 
 function App() {
@@ -11,6 +20,8 @@ function App() {
 // Stateful value and function, 'notes' as the local variable and 'setNotes' as the function to update the state
 const [notes, setNotes] = useState([]);
 
+// State for user input
+const [userInput, setUserInput]  = useState("");
 
 // USE EFFECT
 
@@ -28,7 +39,7 @@ useEffect( () => {
   // 'For in' loop to gain access to all objects in the array
 
   for (let propName in myData) {
-    console.log(propName);
+    // console.log(propName);
 
     // Save the loop in a new variable
     const notesObject = {
@@ -45,24 +56,48 @@ useEffect( () => {
   
 }, []);
 
+// EVENT HANDLERS
 
+const handleChange = (event) => {
+  // console.log("Hello?");
+  // console.log(event.target.value);
+  setUserInput(event.target.value);
+}
 
+// Prevent default behaviour of form
+const handleSubmit = (event) => {
+  event.preventDefault();
+  // Push user input on to the array by referencing the database
+  if (userInput) {
+    const dbRef = ref(realtimeData);
+    push(dbRef, userInput);
+    setUserInput("");
+  } else {
+    alert("Still thinking?")
+  }
+}
 
-
+// DOM STUFF
   return (
     <div>
+      <header>
       <h1>Planted Ideas</h1>
+      </header>
+
       {/* Form container */}
-      <form>
+      <form onSubmit={ handleSubmit }>
         <label htmlFor="userNotepad">What's growing in your mind?</label>
         <input
         type="text"
         id="userNotepad"
+        onChange={ handleChange }
+        value={ userInput }
         />
         <button>Plant it!</button>
       </form>
 
       {/* Container for page content(notes) */}
+      <NoteList />
       <ul> {
         notes.map( (eachNote) => {
           return (
@@ -73,6 +108,9 @@ useEffect( () => {
         })
         }
       </ul>
+      <footer>
+        <p>Created at <a href="https://junocollege.com/">Juno College</a></p>
+      </footer>
     </div>
   )
 }
