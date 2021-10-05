@@ -41,7 +41,7 @@ a {
 HEADER 
 *****************************/
 header {
-  background-color: rgb(157, 241, 199);
+  background-color: rgb(255, 255, 255);
   font-family: 'Fredoka One', cursive;
   text-align: center;
   display: flex;
