@@ -4,10 +4,11 @@
 // 2. Reference databse and display input on page
 // 3. Make a container for the form
   // Consider putting the notes and the form in separate components from main App.js
+// 4. Create way to remove old notes
 
 import realtimeData from './utilities/firebase';
 import { useState, useEffect } from 'react';
-import {ref, onValue, push} from 'firebase/database';
+import {ref, onValue, push, remove} from 'firebase/database';
 import './styles/App.css';
 
 function App() {
@@ -75,6 +76,12 @@ const handleSubmit = (event) => {
   }
 }
 
+// Remove userInput from db
+const deleteNote = (noteKeyDelete) => {
+  const thisNote = ref(realtimeData, noteKeyDelete);
+  remove(thisNote);
+}
+
 // DOM STUFF
   return (
     <div>
@@ -101,6 +108,7 @@ const handleSubmit = (event) => {
           return (
             <li key={eachNote.key}>
                 <p>{eachNote.note}</p>
+                <button onClick={ () => deleteNote(eachNote.key) }className="deleteBtn">Uproot!</button>
             </li>
           )
         })
