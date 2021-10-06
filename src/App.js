@@ -5,11 +5,9 @@
 // 3. Make a container for the form
   // Consider putting the notes and the form in separate components from main App.js
 
-
 import realtimeData from './utilities/firebase';
 import { useState, useEffect } from 'react';
 import {ref, onValue, push} from 'firebase/database';
-import NoteList from './components/NoteList';
 import './styles/App.css';
 
 function App() {
@@ -86,7 +84,7 @@ const handleSubmit = (event) => {
       <main>
 
       {/* Form container */}
-      <form onSubmit={ handleSubmit }>
+      <form onSubmit={ handleSubmit } >
         <label htmlFor="userNotepad">What's growing in your mind?</label>
         <input
         type="text"
@@ -98,7 +96,6 @@ const handleSubmit = (event) => {
       </form>
 
       {/* Container for page content(notes) */}
-      {/* <NoteList /> */}
       <ul> {
         notes.map( (eachNote) => {
           return (
@@ -111,7 +108,7 @@ const handleSubmit = (event) => {
       </ul>
       </main>
       <footer>
-        <p>Created at <a href="https://junocollege.com/">Juno College</a></p>
+        <p>Created at <a href="https://junocollege.com/">Juno College 2021</a></p>
       </footer>
     </div>
   )
