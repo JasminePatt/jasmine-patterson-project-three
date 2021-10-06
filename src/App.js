@@ -84,7 +84,7 @@ const deleteNote = (noteKeyDelete) => {
 
 // DOM STUFF
   return (
-    <div>
+    <div className="App">
       <header>
       <h1>Planted <br/> Ideas</h1>
       </header>
@@ -92,14 +92,18 @@ const deleteNote = (noteKeyDelete) => {
 
       {/* Form container */}
       <form onSubmit={ handleSubmit } >
-        <label htmlFor="userNotepad">What's growing in your mind?</label>
-        <input
-        type="text"
-        id="userNotepad"
-        onChange={ handleChange }
-        value={ userInput }
-        />
-        <button>Plant it!<i className="fas fa-plus"></i></button>
+        <fieldset>
+          <label htmlFor="userNotepad">What's growing in your mind?</label>
+          <textarea
+          name="message" 
+          rows="10" 
+          cols="30"
+          id="userNotepad"
+          onChange={ handleChange }
+          value={ userInput }
+          />
+          <button>Plant it!<i className="fas fa-plus"></i></button>
+        </fieldset>
       </form>
 
       {/* Container for page content(notes) */}
@@ -122,3 +126,12 @@ const deleteNote = (noteKeyDelete) => {
   )
 }
 export default App;
+
+// TO-DO
+// - Adjust psuedocode
+// - Make styling match wirefram
+// - Consider adding date to each note
+// - STRETCHGOALS
+  // - Color code notes
+  // - Pop-up form,instead of having it on main page
+  // - Authentication?(User login)
