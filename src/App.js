@@ -1,10 +1,9 @@
 // PSEUDOCODE
-
-// 1. Connect to firebase
-// 2. Reference databse and display input on page
-// 3. Make a container for the form
-  // Consider putting the notes and the form in separate components from main App.js
-// 4. Create way to remove old notes
+// 1. Connect to firebase, by creating database
+// 2. Reference databse from firebase utility and display input from db in console(then page)
+// 3. Push data from userInput onto a new array(for the database)
+// 4. Push new content onto list item
+// 5. Create button that removes submitted notes
 
 import realtimeData from './utilities/firebase';
 import { useState, useEffect } from 'react';
@@ -13,9 +12,7 @@ import './styles/App.css';
 
 function App() {
 
-
 // USE STATE VARIABLES
-
 // Stateful value and function, 'notes' as the local variable and 'setNotes' as the function to update the state
 const [notes, setNotes] = useState([]);
 
@@ -23,14 +20,12 @@ const [notes, setNotes] = useState([]);
 const [userInput, setUserInput]  = useState("");
 
 // USE EFFECT
-
 // useEffect to run when the component first mounts
 useEffect( () => {
   // Creating database referennce
   const dbRef = ref(realtimeData);
 
   onValue(dbRef, (snapshot) => {
-    // console.log(snapshot.val())
     const myData = snapshot.val();
 
   // Empty array for the notes object
@@ -38,8 +33,6 @@ useEffect( () => {
   // 'For in' loop to gain access to all objects in the array
 
   for (let propName in myData) {
-    // console.log(propName);
-
     // Save the loop in a new variable
     const notesObject = {
       key: propName,
@@ -58,8 +51,6 @@ useEffect( () => {
 // EVENT HANDLERS
 
 const handleChange = (event) => {
-  // console.log("Hello?");
-  // console.log(event.target.value);
   setUserInput(event.target.value);
 }
 
@@ -107,7 +98,7 @@ const deleteNote = (noteKeyDelete) => {
         </fieldset>
       </form>
 
-      {/* Container for page content(notes) */}
+      {/* Container for userInput(notes) */}
       <ul> {
         notes.map( (eachNote) => {
           return (
@@ -128,12 +119,3 @@ const deleteNote = (noteKeyDelete) => {
   )
 }
 export default App;
-
-// TO-DO
-// - Adjust psuedocode
-// - Make styling match wireframe
-// - STRETCHGOALS
-  // - Color code notes
-  // - Pop-up form,instead of having it on main page
-  // - Authentication?(User login)
-  // - Consider adding date to each note
