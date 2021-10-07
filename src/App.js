@@ -91,7 +91,7 @@ const deleteNote = (noteKeyDelete) => {
       <main>
 
       {/* Form container */}
-      <form onSubmit={ handleSubmit } >
+      <form onSubmit={ handleSubmit } className="newNote">
         <fieldset>
           <label htmlFor="userNotepad">What's growing in your mind?</label>
           <textarea
@@ -101,8 +101,9 @@ const deleteNote = (noteKeyDelete) => {
           id="userNotepad"
           onChange={ handleChange }
           value={ userInput }
+          placeholder="My mind is like a garden..."
           />
-          <button>Plant it!<i className="fas fa-plus"></i></button>
+          <button className="submitBtn"><i aria-hidden="true" className="fas fa-plus" title="Submit your note"></i></button>
         </fieldset>
       </form>
 
@@ -112,7 +113,7 @@ const deleteNote = (noteKeyDelete) => {
           return (
             <li key={eachNote.key}>
                 <p>{eachNote.note}</p>
-                <button onClick={ () => deleteNote(eachNote.key) }className="deleteBtn">Uproot!</button>
+                <button onClick={ () => deleteNote(eachNote.key) }className="deleteBtn"><i aria-hidden="true" className="fas fa-trash" title="Delete your note"></i></button>
             </li>
           )
         })
