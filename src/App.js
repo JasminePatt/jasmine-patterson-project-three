@@ -121,6 +121,7 @@ const deleteNote = (noteKeyDelete) => {
       </ul>
       </main>
       <footer>
+        <p>Copyright Jasmine Patterson</p>
         <p>Created at <a href="https://junocollege.com/">Juno College 2021</a></p>
       </footer>
     </div>
@@ -130,9 +131,9 @@ export default App;
 
 // TO-DO
 // - Adjust psuedocode
-// - Make styling match wirefram
-// - Consider adding date to each note
+// - Make styling match wireframe
 // - STRETCHGOALS
   // - Color code notes
   // - Pop-up form,instead of having it on main page
   // - Authentication?(User login)
+  // - Consider adding date to each note
