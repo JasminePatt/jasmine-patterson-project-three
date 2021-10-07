@@ -112,7 +112,7 @@ const deleteNote = (noteKeyDelete) => {
       </ul>
       </main>
       <footer>
-        <p>Copyright Jasmine Patterson</p>
+        <p>Copyright©Jasmine Patterson</p>
         <p>Created at <a href="https://junocollege.com/">Juno College 2021</a></p>
       </footer>
     </div>

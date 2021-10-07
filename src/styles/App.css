@@ -24,8 +24,11 @@ body {
   font-family: 'Pangolin', cursive;
   margin: 0 auto;
   padding: 0;
-  max-width: 100%;
   height: 100vh;
+}
+
+.App {
+  max-width: 1920px;
 }
 
 h1, p {
@@ -68,7 +71,7 @@ h1{
   background-clip: text;
 	color: transparent;
   text-transform: uppercase;
-	font-size: 8rem;
+	font-size: 9rem;
 	line-height: 0.9;
 	margin: 10px 0;  
   padding: 20px 0;
@@ -78,11 +81,11 @@ h1{
 BODY 
 *****************************/
 main {
+  /* Background image by Jasmine P */
   background-image: url(../assets/background-sunflower.png);
   background-size: cover;
   background-position: bottom ;
   display: flex;
-  max-width: 100vw;
   align-items: center;
   height: 100vh;
 }
@@ -230,7 +233,7 @@ footer {
 }
 
 footer a {
-  color: white;
+  color: rgb(95, 148, 88);
 }
 
 
