@@ -28,20 +28,20 @@ useEffect( () => {
   onValue(dbRef, (snapshot) => {
     const myData = snapshot.val();
 
-  // Empty array for the notes object
-  const newArray = [];
-  // 'For in' loop to gain access to all objects in the array
+    // Empty array for the notes object
+    const newArray = [];
+    // 'For in' loop to gain access to all objects in the array
 
-  for (let propName in myData) {
-    // Save the loop in a new variable
-    const notesObject = {
-      key: propName,
-      note: myData[propName]
+    for (let propName in myData) {
+      // Save the loop in a new variable
+      const notesObject = {
+        key: propName,
+        note: myData[propName]
+      }
+
+      // Push all new input on to the notesObject onto the Array
+      newArray.push(notesObject)
     }
-
-    // Push all new input on to the notesObject onto the Array
-    newArray.push(notesObject)
-  }
 // Passing our state the array
   setNotes(newArray);
   });

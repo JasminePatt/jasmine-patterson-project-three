@@ -61,6 +61,7 @@ header {
 	justify-content: center;
   color: rgba(255, 255, 255, 0);
   max-width: 100%;
+  padding-bottom: 50px;
 }
 
 h1{
@@ -87,7 +88,7 @@ main {
   background-position: bottom ;
   display: flex;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 /*****************************
@@ -240,12 +241,17 @@ footer a {
 /**************************** 
 MEDIA QUERIES
 ****************************/
+@media (max-width: 1020px) {
+  ul {
+    top: 0;
+  }
+
 @media (max-width: 875px) {
   main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    height: 100%;
   }
 
   form {
@@ -258,7 +264,7 @@ MEDIA QUERIES
     padding: 0;
     justify-content: center;
     align-items: center;
-    top: 0;
+    top: 10px;
   }
 }
 
@@ -289,6 +295,7 @@ MEDIA QUERIES
   textarea {
     width: 80%;
   }
+}
 }
 
 
